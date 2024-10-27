@@ -35,6 +35,8 @@ import java.util.jar.Manifest;
  *
  * @since 3.5
  */
+
+//very important
 public class JarRsrcLoader {
 
     private static class ManifestInfo {
