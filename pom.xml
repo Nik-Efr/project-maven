@@ -13,9 +13,34 @@
         <maven.compiler.target>18</maven.compiler.target>
     </properties>
 
+    <dependencyManagement>
+               <dependencies>
+                   <dependency>
+                       <groupId>org.springframework.boot</groupId>
+                       <artifactId>spring-boot-dependencies</artifactId>
+                       <version>3.3.4</version>
+                       <type>pom</type>
+                       <scope>import</scope>
+                   </dependency>
+               </dependencies>
+    </dependencyManagement>
+
     <dependencies>
 
+        <dependency>
+            <groupId>com.javarush</groupId>
+            <artifactId>desktop-game-engine</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.12.0</version>
+        </dependency>
+
     </dependencies>
+
 
     <build>
         <plugins>
@@ -27,6 +52,28 @@
                 <configuration>
                     <encoding>UTF-8</encoding>
                 </configuration>
+
+
+
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.6.1</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/libs</outputDirectory>
+                            <includeScope>compile</includeScope>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
             <!-- Run java-fx app over Maven -->
