@@ -10,6 +10,8 @@
 
     <packaging>jar</packaging>
 
+
+
     <properties>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
@@ -89,7 +91,26 @@
                 </configuration>
             </plugin>
 
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>install-external-non-maven-jar</id>
+                        <phase>initialize</phase>
+                        <configuration>
+                            <groupId>com.javarush</groupId>
+                            <artifactId>desktop-game-engine</artifactId>
+                            <version>1.0</version>
+                            <file>${project.basedir}/lib/desktop-game-engine.jar</file>
+                            <packaging>jar</packaging>
+                        </configuration>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -99,10 +120,13 @@
                     <archive>
                         <manifest>
                             <mainClass>org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader</mainClass>
-                            <Rsrc-Main-Class>com.javarush.games.racer.RacerGame</Rsrc-Main-Class>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
                         </manifest>
+                        <manifestEntries>
+                            <Rsrc-Main-Class>com.javarush.games.racer.RacerGame</Rsrc-Main-Class>
+                            <Class-Path>./</Class-Path>
+                        </manifestEntries>
                     </archive>
                 </configuration>
                 <executions>
@@ -112,6 +136,9 @@
                         <goals>
                             <goal>jar</goal>
                         </goals>
+                        <configuration>
+                            <classifier>jar-with-dependencies</classifier>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
