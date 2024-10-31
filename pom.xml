@@ -18,6 +18,24 @@
         <junit.jupiter.version>5.8.1</junit.jupiter.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/Nik-Efr/project-maven</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>Github Nik-Efr Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/Nik-Efr/project-maven</url>
+        </repository>
+    </distributionManagement>
+
     <dependencyManagement>
                <dependencies>
                    <dependency>
