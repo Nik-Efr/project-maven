@@ -21,10 +21,7 @@
     <repositories>
         <repository>
             <id>github</id>
-            <url>https://maven.pkg.github.com/Nik-Efr/project-maven</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
+            <url>https://maven.pkg.github.com/Nik-Efr/desktop-game-engine-1.0</url>
         </repository>
     </repositories>
 
